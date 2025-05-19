@@ -10,7 +10,7 @@ import SwiftUI
 struct RecordView: View {
     @EnvironmentObject var pathManager: PathManager
     @EnvironmentObject var viewModel: UploadViewModel
-    
+    @StateObject private var recorder = AudioRecorder()
     @State private var isPossible = true
     var body: some View {
         VStack(spacing: 0) {
@@ -29,7 +29,7 @@ struct RecordView: View {
                         if isPossible {
                             pathManager.path.append(.Template)
                         }
-                    }, btnColor: Color.first, isActive: isPossible)
+                    }, btnColor: Color.first,    isActive: viewModel.audioData != nil)
                 }
                 .padding(.top, 110)
             }
@@ -39,8 +39,8 @@ struct RecordView: View {
             .background(Color.mainBG)
             
         }
-
         .navigationBarBackButtonHidden()
+        .onAppear(perform: viewModel.resetClass)
         
         
     }
@@ -76,7 +76,15 @@ extension RecordView {
             
             VStack(spacing: 20) {
                 tipsBtn {
-                    print()
+                    if recorder.isRecording {
+                            recorder.stopRecording { data, fileName in
+                                if let data = data, let name = fileName {
+                                    viewModel.setRecordedAudio(data, audiofileName: name)
+                                }
+                            }
+                        } else {
+                            recorder.startRecording()
+                        }
                 }
                 
                 Text("버튼을 눌러 녹음을 시작하세요")

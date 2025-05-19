@@ -14,6 +14,11 @@ class UploadViewModel: ObservableObject {
     @Published var selectedTemplate: String = ""
     @Published var audioFileName: String = ""
     
+    func setRecordedAudio(_ data: Data, audiofileName: String) {
+        self.audioData = data
+        self.audioFileName = fileName
+    }
+    
     func setAudioData(_ data: Data, fileName: String) {
           self.audioData = data
         self.fileName = audioFileName
