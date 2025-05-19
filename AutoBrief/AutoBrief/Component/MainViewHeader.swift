@@ -20,6 +20,7 @@ struct MainViewHeader: View {
                 
                 Spacer()
             }
+            .padding(.vertical, 5)
             .padding(.leading, 10)
         }
         .background(Color.white)
