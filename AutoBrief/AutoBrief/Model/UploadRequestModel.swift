@@ -20,6 +20,6 @@ struct UploadRequestModel {
     var audioData: Data
     var fileName: String
     var template: String
-    var fileType: FileType
+    var fileType: String
 
 }

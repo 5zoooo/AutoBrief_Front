@@ -32,7 +32,7 @@ struct DocumentTypeModel {
 }
 
 let documentTypeList: [DocumentTypeModel] = [
-    DocumentTypeModel(tipsImageName: "document.on.document", tipsBgColor: Color.mainBG, tipsIconColor: Color.mainBlue, header: "DOCX (Word)", discription: "Microsoft Word에서 편집 가능한 문서"),
+    DocumentTypeModel(tipsImageName: "document.on.document", tipsBgColor: Color.mainBG, tipsIconColor: Color.mainBlue, header: "DOCX", discription: "Microsoft Word에서 편집 가능한 문서"),
     DocumentTypeModel(tipsImageName: "richtext.page", tipsBgColor: Color.redBtnBG, tipsIconColor: Color.first, header: "PDF", discription: "모든 기기에서 동일하게 보이는 문서"),
     DocumentTypeModel(tipsImageName: "text.page", tipsBgColor: Color.mainBG, tipsIconColor: Color.gray1, header: "TXT", discription: "가장 기본적인 텍스트 형식")
     

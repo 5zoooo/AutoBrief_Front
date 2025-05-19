@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecordView: View {
     @EnvironmentObject var pathManager: PathManager
+    @EnvironmentObject var viewModel: UploadViewModel
+    
     @State private var isPossible = true
     var body: some View {
         VStack(spacing: 0) {

@@ -11,6 +11,8 @@ struct TemplateView: View {
     @State private var isActive = true
     @State private var selectedIndex: Int? = nil
     @EnvironmentObject var pathManager: PathManager
+    @EnvironmentObject var viewModel: UploadViewModel
+    
     var body: some View {
         VStack(spacing: 0) {
             CustomHeader(action: {
@@ -23,8 +25,10 @@ struct TemplateView: View {
                 Spacer()
                 
                 CTABtn1(action: {
-                    pathManager.path.append(.FileType)
-                }, isActive: true, btnColor: Color.first)
+                    if viewModel.selectedTemplate != "" {
+                        pathManager.path.append(.FileType)
+                    }
+                }, isActive: viewModel.selectedTemplate != "", btnColor: Color.first)
                 .padding(.bottom, 80)
                 
             }.padding(.horizontal, 40)
@@ -48,6 +52,7 @@ extension TemplateView {
                 templateCardView(templatesList[index], isSelected: selectedIndex == index)
                     .onTapGesture {
                         selectedIndex = index
+                        viewModel.setSelectedTemplate(templatesList[index].header)
                     }
             }
         }

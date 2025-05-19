@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var pathManager: PathManager
-    
+
     let sampleDocumentCards: [DocumentCard] = [
         DocumentCard(
             title: "5월 마케팅 전략 회의",

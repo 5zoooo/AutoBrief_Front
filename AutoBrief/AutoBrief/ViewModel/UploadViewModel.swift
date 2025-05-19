@@ -10,18 +10,19 @@ import Foundation
 class UploadViewModel: ObservableObject {
     @Published var audioData: Data? = nil
     @Published var fileName: String = ""
-    @Published var selectedFileType: FileType? = nil
+    @Published var selectedFileType: String = ""
     @Published var selectedTemplate: String = ""
+    @Published var audioFileName: String = ""
     
-    func setAudioData(_ data: Data) {
-        self.audioData = data
-    }
-    
+    func setAudioData(_ data: Data, fileName: String) {
+          self.audioData = data
+        self.fileName = audioFileName
+      }
     func setFileName(_ name: String) {
         self.fileName = name
     }
     
-    func setSelectedFileType(_ fileType: FileType) {
+    func setSelectedFileType(_ fileType: String) {
         self.selectedFileType = fileType
     }
     
@@ -29,16 +30,22 @@ class UploadViewModel: ObservableObject {
         self.selectedTemplate = template
     }
     
+    func resetClass() {
+        audioData = nil
+        fileName = ""
+        selectedFileType = ""
+        selectedTemplate = ""
+        audioFileName = ""
+    }
+    
     func createUploadRequest() -> UploadRequestModel? {
-        guard let audio = audioData,
-              let type = selectedFileType
-        else { return nil }
+        guard let audio = audioData else { return nil }
         
         return UploadRequestModel(
             audioData: audio,
             fileName: fileName,
             template: selectedTemplate,
-            fileType: type
+            fileType: selectedFileType
         )
     }
     

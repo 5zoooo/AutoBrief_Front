@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     @EnvironmentObject var pathManager: PathManager
+    @EnvironmentObject var viewModel: UploadViewModel
     var body: some View {
         VStack(alignment:.center, spacing: 10) {
             LottieView(fileName: "Animation LottieFiles", loopMode: .loop)

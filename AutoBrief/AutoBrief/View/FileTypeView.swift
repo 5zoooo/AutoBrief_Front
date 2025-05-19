@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FileTypeView: View {
+    @EnvironmentObject var viewModel: UploadViewModel
     @EnvironmentObject var pathManager: PathManager
-    @State private var fileName: String = ""
     @State private var isActive = true
     @State private var selectedIndex: Int? = nil
     var body: some View {
@@ -30,8 +30,10 @@ struct FileTypeView: View {
                 Spacer()
                 
                 CTABtn1(action: {
-                    pathManager.path.append(.Loading)
-                }, isActive: true, btnColor: Color.first)
+                    if viewModel.fileName != "" && viewModel.selectedFileType != "" {
+                        pathManager.path.append(.Loading)
+                    }
+                }, isActive: viewModel.fileName != "" && viewModel.selectedFileType != "", btnColor: Color.first)
                 .padding(.horizontal, 40)
                 .padding(.bottom, 80)
             }
@@ -52,7 +54,7 @@ extension FileTypeView {
                 .font(.body1Bold())
                 .foregroundStyle(.gray1)
 
-            TextField("파일 이름을 입력하세요", text: $fileName)
+            TextField("파일 이름을 입력하세요", text: $viewModel.fileName)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
                 .background(
@@ -113,6 +115,7 @@ extension FileTypeView {
                 documentCard(data: documentTypeList[index], isSelected: selectedIndex == index)
                     .onTapGesture {
                         selectedIndex = index
+                        viewModel.setSelectedFileType(documentTypeList[index].header)
                     }
             }
         }

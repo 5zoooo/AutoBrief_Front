@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ResultView: View {
     @EnvironmentObject var pathManager: PathManager
+    @EnvironmentObject var viewModel: UploadViewModel
+    
     var body: some View {
         VStack(spacing: 0) {
             CustomHeader(action: {
