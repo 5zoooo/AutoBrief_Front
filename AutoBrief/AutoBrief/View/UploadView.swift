@@ -18,7 +18,6 @@ struct UploadView: View {
             
             VStack(spacing: 80) {
                 mainArea
-                    .padding(.horizontal, 40)
                     .padding(.top, 180)
                 
                 HStack {
@@ -29,8 +28,8 @@ struct UploadView: View {
                         }
                     }, btnColor: Color.second, isActive: isPossible)
                 }
-                .padding(.horizontal,40)
             }
+            .padding(.horizontal,40)
             .frame(maxHeight: .infinity, alignment: .top)
             .background(Color.mainBG)
             

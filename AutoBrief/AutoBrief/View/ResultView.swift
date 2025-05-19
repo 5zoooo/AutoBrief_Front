@@ -10,9 +10,17 @@ import SwiftUI
 struct ResultView: View {
     @EnvironmentObject var pathManager: PathManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            CustomHeader(action: {
+                pathManager.path.removeLast()
+            }, title: "녹음")
+            VStack(spacing: 0) {
+                
+            }
+        }
     }
 }
+
 
 #Preview {
     ResultView()
