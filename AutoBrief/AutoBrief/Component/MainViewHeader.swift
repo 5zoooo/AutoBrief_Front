@@ -17,8 +17,10 @@ struct MainViewHeader: View {
                 Text("Auto Brief")
                     .font(.title1())
                     .foregroundStyle(.mainBlack)
+                
+                Spacer()
             }
-            
+            .padding(.leading, 10)
         }
         .background(Color.white)
         .frame(maxWidth: .infinity)
