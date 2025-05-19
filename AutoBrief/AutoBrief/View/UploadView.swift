@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UploadView: View {
+    @State private var showAudioPicker = false
+    @StateObject private var viewModel = UploadViewModel()
     @EnvironmentObject var pathManager: PathManager
     @State private var isPossible = true
     var body: some View {
@@ -58,7 +60,7 @@ extension UploadView {
             .padding(.top, 30)
             
             Button {
-                print()
+                showAudioPicker = true
             } label: {
                 Text("파일 선택")
                     .font(.title2())
@@ -67,6 +69,16 @@ extension UploadView {
                     .padding(.horizontal, 47)
                     .background(Color.second)
                     .cornerRadius(10)
+            }
+            .sheet(isPresented: $showAudioPicker) {
+                AudioFilePicker { url in
+                    do {
+                        let data = try Data(contentsOf: url)
+                        viewModel.setAudioData(data)
+                    } catch {
+                        print("파일 로딩 실패: \(error.localizedDescription)")
+                    }
+                }
             }
             .padding(EdgeInsets(top: 20, leading: 0, bottom: 40, trailing: 0))
 
