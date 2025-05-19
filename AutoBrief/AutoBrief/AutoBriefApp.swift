@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct AutoBriefApp: App {
+    @StateObject var pathManager = PathManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(pathManager)
         }
     }
 }

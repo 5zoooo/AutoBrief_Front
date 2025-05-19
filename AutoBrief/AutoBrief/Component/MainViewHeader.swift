@@ -9,12 +9,19 @@ import SwiftUI
 
 struct MainViewHeader: View {
     var body: some View {
-        HStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .leading) {
+            HStack(spacing: 10) {
+                Image(.mainLogo)
+                    .frame(width: 16, height: 16)
+                
+                Text("Auto Brief")
+                    .font(.title1())
+                    .foregroundStyle(.mainBlack)
+            }
             
         }
         .background(Color.white)
         .frame(maxWidth: .infinity)
-    
     }
 }
 
