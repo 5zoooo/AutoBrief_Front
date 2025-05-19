@@ -13,7 +13,7 @@ struct ResultView: View {
         VStack(spacing: 0) {
             CustomHeader(action: {
                 pathManager.path.removeLast()
-            }, title: "녹음")
+            }, title: "결과 보기")
             VStack(spacing: 0) {
                 
             }
@@ -21,6 +21,9 @@ struct ResultView: View {
     }
 }
 
+extension ResultView {
+    
+}
 
 #Preview {
     ResultView()
