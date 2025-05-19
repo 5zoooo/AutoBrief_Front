@@ -10,9 +10,22 @@
 		139721E52DDAACE1007D73FC /* AutoBrief.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoBrief.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		139722102DDAAFD4007D73FC /* Exceptions for "AutoBrief" folder in "AutoBrief" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 139721E42DDAACE1007D73FC /* AutoBrief */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		139721E72DDAACE1007D73FC /* AutoBrief */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				139722102DDAAFD4007D73FC /* Exceptions for "AutoBrief" folder in "AutoBrief" target */,
+			);
 			path = AutoBrief;
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,8 @@
 				DEVELOPMENT_TEAM = 34K3V5D9X5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoBrief/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +299,8 @@
 				DEVELOPMENT_TEAM = 34K3V5D9X5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoBrief/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
