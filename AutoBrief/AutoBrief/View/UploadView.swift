@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UploadView: View {
     @EnvironmentObject var pathManager: PathManager
-    @State private var isPossible = false
+    @State private var isPossible = true
     var body: some View {
         VStack(spacing: 0) {
             CustomHeader(action: {
