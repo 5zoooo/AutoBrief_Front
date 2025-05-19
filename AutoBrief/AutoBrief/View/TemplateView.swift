@@ -1,5 +1,5 @@
 //
-//  RecordView.swift
+//  TemplateView.swift
 //  AutoBrief
 //
 //  Created by 김다빈 on 5/19/25.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct RecordView: View {
+struct TemplateView: View {
     @EnvironmentObject var pathManager: PathManager
     var body: some View {
-        Text("RecordView")
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-//#Preview {
-//    RecordView()
-//}
+#Preview {
+    TemplateView()
+}

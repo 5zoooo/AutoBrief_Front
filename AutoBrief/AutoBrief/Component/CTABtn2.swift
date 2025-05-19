@@ -1,5 +1,5 @@
 //
-//  CTABtn1.swift
+//  CTABtn2.swift
 //  AutoBrief
 //
 //  Created by 김다빈 on 5/19/25.
@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct CTABtn1: View {
+struct CTABtn2: View {
     var action: () -> Void
-    var isActive: Bool
     var btnColor: Color
+    var isActive: Bool
     var body: some View {
         Button {
             action()
         } label: {
             Text("다음")
-                .font(.body1Bold())
+                .font(.title2())
                 .foregroundStyle(.mainWhite)
-                .frame(maxWidth: .infinity)
-                .frame(height: 44)
-                .background(isActive ? Color.first : Color.gray1)
+                .frame(height: 55)
+                .padding(.horizontal, 100)
+                .background(isActive ? btnColor : Color.gray1)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
         }
     }

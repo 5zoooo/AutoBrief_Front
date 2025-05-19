@@ -69,7 +69,7 @@ struct HomeView: View {
         )
     ]
     
-
+    
     var body: some View {
         NavigationStack(path: $pathManager.path) {
             
@@ -94,20 +94,32 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .background(Color.mainBG)
+            .navigationDestination(for: StackViewType.self) { StackViewType in
+                switch StackViewType {
+                case.Record:
+                    RecordView().environmentObject(pathManager)
+                case.Upload:
+                    UploadView()
+                case .Template:
+                    TemplateView()
+                case .FileType:
+                    FileTypeView()
+                case .Loading:
+                    LoadingView()
+                case .Result:
+                    ResultView()
+                }
+            }
+
             
             
         }
         .background(Color.mainBG)
-        .navigationDestination(for: StackViewType.self) { StackViewType in
-            switch StackViewType {
-                
-            default:
-                RecordView()
-            }
-            
-        }
+      
     }
 }
+
+//MARK: Views
 
 extension HomeView {
     private func topArea() -> some View {
@@ -124,9 +136,14 @@ extension HomeView {
     
     private var navigateArea: some View {
         HStack(spacing: 20) {
-            navigateBtn(btnHeadr: "녹음 시작", btnDescription: "새로운 녹음을 시작", btnmainColor: Color.first, clipColor: Color.btnbg1, clipSymbol: "microphone", customAction: {print()})
+            navigateBtn(btnHeadr: "녹음 시작", btnDescription: "새로운 녹음을 시작", btnmainColor: Color.first, clipColor: Color.btnbg1, clipSymbol: "microphone", customAction: {
+                pathManager.path.append(.Record)
+                print(pathManager.$path)
+            })
             
-            navigateBtn(btnHeadr: "파일 업로드", btnDescription: "오디오 파일 업로드", btnmainColor: Color.second, clipColor: Color.btnbg2, clipSymbol: "square.and.arrow.up", customAction: {print()})
+            navigateBtn(btnHeadr: "파일 업로드", btnDescription: "오디오 파일 업로드", btnmainColor: Color.second, clipColor: Color.btnbg2, clipSymbol: "square.and.arrow.up", customAction: {
+                pathManager.path.append(.Upload)
+            })
         }
         .frame(maxWidth: .infinity)
         .frame(height: 95)
@@ -254,7 +271,7 @@ extension HomeView {
                             .foregroundColor(.gray)
                             .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                             .background(Circle().fill(Color.mainBG))
-
+                        
                     }
                     
                     if data.hasCollaborator {
@@ -263,7 +280,7 @@ extension HomeView {
                             .foregroundColor(.gray)
                             .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                             .background(Circle().fill(Color.mainBG))
-                       
+                        
                     }
                 }
                 
@@ -283,3 +300,4 @@ extension HomeView {
 //#Preview {
 //    HomeView()
 //}
+
