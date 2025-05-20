@@ -21,7 +21,7 @@ class UploadViewModel: ObservableObject {
     
     func setAudioData(_ data: Data, fileName: String) {
           self.audioData = data
-        self.fileName = audioFileName
+        self.audioFileName = fileName
       }
     func setFileName(_ name: String) {
         self.fileName = name
@@ -45,7 +45,7 @@ class UploadViewModel: ObservableObject {
     
     func createUploadRequest() -> UploadRequestModel? {
         guard let audio = audioData else { return nil }
-        
+        print(self.audioData, self.fileName, self.selectedTemplate, self.selectedFileType)
         return UploadRequestModel(
             audioData: audio,
             fileName: fileName,

@@ -60,12 +60,12 @@ extension UploadView {
             }
             .padding(.top, 30)
             
-            if !viewModel.fileName.isEmpty {
-                       Text("선택한 파일: \(viewModel.fileName)")
-                           .font(.body2Regular())
-                           .foregroundStyle(.gray)
-                           .padding(.top, 10)
-                   }
+            if viewModel.audioFileName != "" {
+                Text("선택한 파일: \(viewModel.audioFileName)")
+                    .font(.body2Regular())
+                    .foregroundStyle(.gray)
+                    .padding(.top, 10)
+            }
             
             Button {
                 showAudioPicker = true
@@ -83,14 +83,14 @@ extension UploadView {
                     do {
                         let data = try Data(contentsOf: url)
                         viewModel.setAudioData(data, fileName: url.lastPathComponent)
-        
+                        
                     } catch {
                         print("파일 로딩 실패: \(error.localizedDescription)")
                     }
                 }
             }
             .padding(EdgeInsets(top: 20, leading: 0, bottom: 40, trailing: 0))
-
+            
         }
         .frame(maxWidth: .infinity)
         .background(
@@ -98,9 +98,9 @@ extension UploadView {
                 .fill(Color.mainWhite)
             
         )
-   
-   
-
+        
+        
+        
     }
     
     private func tipsImage() -> some View {
@@ -108,7 +108,7 @@ extension UploadView {
             Circle()
                 .fill(Color.btnbg2)
                 .frame(width: 80, height: 80) // 원하는 사이즈 조정
-
+            
             Image(systemName: "square.and.arrow.up")
                 .font(.system(size: 30, weight: .semibold))
                 .foregroundColor(.white)

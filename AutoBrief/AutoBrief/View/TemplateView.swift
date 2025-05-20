@@ -39,8 +39,18 @@ struct TemplateView: View {
         }
     }
 }
-
-
+// MARK: Function
+extension TemplateView {
+    private func mapTemplateHeaderToCode(_ title: String) -> String {
+        switch title {
+        case "강의노트": return "lecture_note"
+        case "회의록": return "meeting_minutes"
+        case "진단서": return "ward_round"
+        case "보고서": return "report"
+        default: return ""
+        }
+    }
+}
 // MARK: Views
 extension TemplateView {
     
@@ -52,7 +62,9 @@ extension TemplateView {
                 templateCardView(templatesList[index], isSelected: selectedIndex == index)
                     .onTapGesture {
                         selectedIndex = index
-                        viewModel.setSelectedTemplate(templatesList[index].header)
+                        let selectedTitle = templatesList[index].header
+                        let mapped = mapTemplateHeaderToCode(selectedTitle)
+                        viewModel.setSelectedTemplate(mapped)
                     }
             }
         }

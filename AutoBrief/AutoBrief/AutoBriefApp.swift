@@ -11,9 +11,11 @@ import SwiftUI
 struct AutoBriefApp: App {
     @StateObject var pathManager = PathManager()
     @StateObject var uploadViewModel = UploadViewModel()
+    @StateObject var downloadViewModel = DownloadViewModel()
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(downloadViewModel)
                 .environmentObject(pathManager)
                 .environmentObject(uploadViewModel)
         }
